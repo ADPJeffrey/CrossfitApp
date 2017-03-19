@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:PROverviewBasePage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="CrossfitApp.PROverviewPage"
+		xmlns:d="clr-namespace:CrossfitApp.Base;assembly=CrossfitApp"
+		Title="Personal bests">
+
+	<ContentPage.ToolbarItems>
+  	<ToolbarItem 
+		Name="Add" 
+		Command="{Binding NavigateToAddNewPRCommand}">
+	</ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+	<ListView 
+		x:Name="PeopleListView" 
+		ItemsSource="{Binding PersonalRecord}" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</d:PROverviewBasePage>

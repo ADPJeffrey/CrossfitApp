@@ -12,47 +12,37 @@ using XLabs.Platform.Services.Media;
 
 namespace CrossfitApp
 {
-	public class DetailViewModel : ViewModelBase
+	public class AddNewPRViewModel : ViewModelBase
 	{
+		#region Properties
 		private readonly INavigationService _navigationService;
 
 		public PersonalRecord PersonalRecord { get; set; }
-		public ExerciseTypeEnum CurExersice { get; set; }
+		#endregion
+
+		#region Commands
+		public ICommand SaveNewPRCommand { get; set; }
+		#endregion
+
 		public IMediaPicker MediaPicker { get; set; }
 
-		public DetailViewModel(INavigationService navigationService)
+		public AddNewPRViewModel(INavigationService navigationService)
 		{
 			if (navigationService == null) throw new ArgumentNullException(nameof(navigationService));
 			_navigationService = navigationService;
 
-			ClickMeCallBackAction = () => { };
-			ClickMeCommand = new RelayCommand(() => ClickMeCallBackAction());
-
-			PersonalRecord = new PersonalRecord();
-			PersonalRecord.ExerciseType = Enum.GetNames(typeof(ExerciseTypeEnum));
-			PersonalRecord.Date = DateTime.Now;
-			//PersonalRecord.ExerciseType = new List<string>
-			//{
-			//	"New York",
-			//	"Boston",
-			//	"Chicago"
-			//};
-
 			MediaPicker = DependencyService.Get<IMediaPicker>();
-			SaveNewPRCommand = new RelayCommand(() => SaveNewPR());
+			SaveNewPRCommand = new RelayCommand(() => SaveNewPR(PersonalRecord));
 		}
 
-		public void SaveNewPR()
+		public void SaveNewPR(PersonalRecord newPR)
 		{
-			
+			var viewModel = App.Locator.PROverview;
+			viewModel.PersonalRecord.Add(newPR);
+			_navigationService.GoBack();
 		}
 
-		public ICommand SaveNewPRCommand { get; set; }
 
-		public ICommand ClickMeCommand { get; set; }
-		public Person Person { get; set; }
-
-		public Action ClickMeCallBackAction { get; set; }
 
 		#region ImagePicker
 

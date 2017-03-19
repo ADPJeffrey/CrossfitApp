@@ -1,4 +1,5 @@
 ﻿using System;
+using CrossfitApp.Base;
 using Xamarin.Forms;
 
 namespace CrossfitApp
@@ -14,12 +15,12 @@ namespace CrossfitApp
 
 		public App()
 		{
-			var firstPage = new NavigationPage(new MainPage());
+			var prOverviewPage = new NavigationPage(new PROverviewPage());
 
-			Locator.nav.Initialize(firstPage);
+			Locator.nav.Initialize(prOverviewPage);
 
 			// The root page of your application
-			MainPage = firstPage;
+			MainPage = prOverviewPage;
 		}
 
 		protected override void OnStart()

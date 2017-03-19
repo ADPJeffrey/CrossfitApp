@@ -28,35 +28,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\DetailPage.xaml">
+    <EmbeddedResource Include="View\AddNewPRPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainPage.xaml">
+    <EmbeddedResource Include="View\PROverviewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\PROverviewViewModel.cs" />
     <Compile Include="Interface\IPeopleService.cs" />
     <Compile Include="Stub\PeopleServiceStub.cs" />
     <Compile Include="ViewModel\Locator.cs" />
-    <Compile Include="ViewModel\DetailViewModel.cs" />
+    <Compile Include="ViewModel\AddNewPRViewModel.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Utils\NameGenerator.cs" />
     <Compile Include="Interface\IPerson.cs" />
-    <Compile Include="View\DetailPage.xaml.cs">
-      <DependentUpon>DetailPage.xaml</DependentUpon>
+    <Compile Include="View\AddNewPRPage.xaml.cs">
+      <DependentUpon>AddNewPRPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="View\PROverviewpage.xaml.cs">
+      <DependentUpon>PROverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service\NavigationService.cs" />
     <Compile Include="Interface\IPersonalRecord.cs" />
     <Compile Include="Enum\ExerciseTypeEnum.cs" />
     <Compile Include="Model\PersonalRecord.cs" />
     <Compile Include="Extensions\BindablePicker.cs" />
+    <Compile Include="Base\ViewBase.cs" />
+    <Compile Include="Interface\IViewModel.cs" />
+    <Compile Include="Base\PROverviewBasePage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -109,6 +112,7 @@
     <Folder Include="View\" />
     <Folder Include="Enum\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Base\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

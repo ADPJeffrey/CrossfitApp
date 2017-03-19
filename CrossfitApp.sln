@@ -54,4 +54,22 @@ Global
 		{08AF4DF1-A507-4AFD-B850-7D0397F8B362}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{08AF4DF1-A507-4AFD-B850-7D0397F8B362}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.NameConventionPolicy = $1
+		$1.Rules = $2
+		$2.NamingRule = $3
+		$3.Name = Type Parameters
+		$3.AffectedEntity = TypeParameter
+		$3.VisibilityMask = VisibilityMask
+		$3.NamingStyle = PascalCase
+		$3.IncludeInstanceMembers = True
+		$3.IncludeStaticEntities = True
+		$3.RequiredPrefixes = $4
+		$4.String = T
+		$3.RequiredSuffixes = $5
+		$5.String = Exception
+		$0.VersionControlPolicy = $6
+		$6.inheritsSet = Mono
+	EndGlobalSection
 EndGlobal

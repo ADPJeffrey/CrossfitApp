@@ -7,8 +7,8 @@ namespace CrossfitApp
 {
 	public class Locator
 	{
-		public const string MainPage = "MainPage";
-		public const string AddNewPRPage = "DetailPage";
+		public const string PROverviewPage = "PROverviewPage";
+		public const string AddNewPRPage = "AddNewPRPage";
 
 		public NavigationService nav { get; set; }
 		/// <summary>
@@ -16,15 +16,15 @@ namespace CrossfitApp
 		/// </summary>
 		public Locator()
 		{
-		 	nav = new NavigationService();
-			nav.Configure(Locator.MainPage, typeof(MainPage));
-			nav.Configure(Locator.AddNewPRPage, typeof(DetailPage));
+			nav = new NavigationService();
+			nav.Configure(Locator.PROverviewPage, typeof(PROverviewPage));
+			nav.Configure(Locator.AddNewPRPage, typeof(AddNewPRPage));
 
 			ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
 			// ViewModels
-			SimpleIoc.Default.Register<MainViewModel>();
-			SimpleIoc.Default.Register<DetailViewModel>();
+			SimpleIoc.Default.Register<PROverviewViewModel>();
+			SimpleIoc.Default.Register<AddNewPRViewModel>();
 
 			// Services
 			SimpleIoc.Default.Register<IPeopleService, PeopleServiceStub>();
@@ -37,9 +37,9 @@ namespace CrossfitApp
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
 			"CA1822:MarkMembersAsStatic",
 			Justification = "This non-static member is needed for data binding purposes.")]
-		public MainViewModel Main
+		public PROverviewViewModel PROverview
 		{
-			get { return ServiceLocator.Current.GetInstance<MainViewModel>(); }
+			get { return ServiceLocator.Current.GetInstance<PROverviewViewModel>(); }
 		}
 
 		/// <summary>
@@ -48,9 +48,10 @@ namespace CrossfitApp
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
 			"CA1822:MarkMembersAsStatic",
 			Justification = "This non-static member is needed for data binding purposes.")]
-		public DetailViewModel Detail
+		public AddNewPRViewModel AddNewPR
 		{
-			get { return ServiceLocator.Current.GetInstance<DetailViewModel>(); }
+			get { return ServiceLocator.Current.GetInstance<AddNewPRViewModel>(); }
+
 		}
 	}
 }
