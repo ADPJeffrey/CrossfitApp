@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<d:AddNewPRBasePage 
 		xmlns="http://xamarin.com/schemas/2014/forms" 
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="CrossfitApp.AddNewPRPage"
 		xmlns:bindablePicker="clr-namespace:CrossfitApp;assembly=CrossfitApp"
+		xmlns:d="clr-namespace:CrossfitApp.Base;assembly=CrossfitApp"
 		NavigationPage.HasBackButton="false"
 		Title="Add new PR">
 
@@ -110,4 +111,4 @@
 				<Button Text="Click me" Command="{Binding ClickMeCommand}"/>
 			</StackLayout>
 	-->
-</ContentPage>
+</d:AddNewPRBasePage >

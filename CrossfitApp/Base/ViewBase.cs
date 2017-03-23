@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace CrossfitApp
 {
-	public class ViewBase<T> : ContentPage where T : IViewModel, new()
+	public class ViewBase<T> : ContentPage where T : IViewModel
 	{
 		readonly T _viewModel;
 

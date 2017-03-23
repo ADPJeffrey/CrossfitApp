@@ -12,7 +12,7 @@ using XLabs.Platform.Services.Media;
 
 namespace CrossfitApp
 {
-	public class AddNewPRViewModel : ViewModelBase
+	public class AddNewPRViewModel : ViewModelBase, IViewModel
 	{
 		#region Properties
 		private readonly INavigationService _navigationService;

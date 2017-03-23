@@ -60,6 +60,7 @@
     <Compile Include="Base\ViewBase.cs" />
     <Compile Include="Interface\IViewModel.cs" />
     <Compile Include="Base\PROverviewBasePage.cs" />
+    <Compile Include="Base\AddNewPRBasePage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

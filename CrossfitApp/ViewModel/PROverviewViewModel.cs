@@ -22,9 +22,6 @@ namespace CrossfitApp
 		public ICommand NavigateToAddNewPRCommand { get; set; }
 		#endregion
 
-
-
-		[PreferredConstructorAttribute]
 		public PROverviewViewModel(INavigationService navigationService)
 		{
 			if (navigationService == null) throw new ArgumentNullException(nameof(navigationService));
@@ -34,8 +31,6 @@ namespace CrossfitApp
 
 			Task.Run(() => Init());
 		}
-
-		public PROverviewViewModel() { }
 
 		public async Task Init()
 		{
