@@ -28,6 +28,7 @@ namespace CrossfitApp
 
 			// Services
 			SimpleIoc.Default.Register<IPeopleService, PeopleServiceStub>();
+			SimpleIoc.Default.Register<IDataService, DatabaseService>();
 			SimpleIoc.Default.Register<INavigationService>(() => nav);
 		}
 

@@ -5,9 +5,10 @@ namespace CrossfitApp
 {
 	public interface IPersonalRecord
 	{
+		int ID { get; set; }
 		string Name { get; set; }
 		DateTime Date { get; set; }
-		IList<string> ExerciseType { get; set; }
+		int ExerciseTypeID { get; set; }
 		int MaximumReps { get; set; }
 		int Weight { get; set; }
 		string Image { get; set; }

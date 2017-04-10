@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -7,6 +8,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using Xamarin.Forms;
 
 namespace CrossfitApp
 {
@@ -14,18 +16,24 @@ namespace CrossfitApp
 	{
 		#region Properties
 		private readonly INavigationService _navigationService;
+		private readonly IDataService _databaseService;
 
 		public ObservableCollection<IPersonalRecord> PersonalRecord { get; private set; }
+
+		private static IDataService DataService { get; } = DependencyService.Get<IDataService>();
 		#endregion
 
 		#region Commands
 		public ICommand NavigateToAddNewPRCommand { get; set; }
 		#endregion
 
-		public PROverviewViewModel(INavigationService navigationService)
+		public PROverviewViewModel(INavigationService navigationService, IDataService databaseService)
 		{
 			if (navigationService == null) throw new ArgumentNullException(nameof(navigationService));
 			_navigationService = navigationService;
+
+			if (databaseService == null) throw new ArgumentNullException(nameof(databaseService));
+			_databaseService = databaseService;
 
 			NavigateToAddNewPRCommand = new RelayCommand(() => NavigateToPRPage());
 
@@ -37,7 +45,13 @@ namespace CrossfitApp
 			if (PersonalRecord != null) return;
 
 			PersonalRecord = new ObservableCollection<IPersonalRecord>();
-			//RaisePropertyChanged(() => People);
+
+			// insert dummy data
+			//_databaseService.AddPersonalRecord(new PersonalRecord() { Name = "test" });
+
+			//var prs = _databaseService.GetPersonalRecords();
+
+			PersonalRecord = new ObservableCollection<IPersonalRecord>(_databaseService.GetPersonalRecords());
 		}
 
 		public void NavigateToPRPage()

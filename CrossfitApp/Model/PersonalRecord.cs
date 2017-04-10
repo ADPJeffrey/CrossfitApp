@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
 
 namespace CrossfitApp
 {
 	public class PersonalRecord : IPersonalRecord
 	{
-		public PersonalRecord()
-		{
-		}
+		[PrimaryKey, AutoIncrement]
+		public int ID { get; set; }
 
 		public DateTime Date
 		{
@@ -15,7 +15,7 @@ namespace CrossfitApp
 			set;
 		}
 
-		public IList<string> ExerciseType
+		public int ExerciseTypeID
 		{
 			get;
 			set;

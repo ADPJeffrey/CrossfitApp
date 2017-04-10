@@ -16,8 +16,11 @@ namespace CrossfitApp
 	{
 		#region Properties
 		private readonly INavigationService _navigationService;
+		private readonly IDataService _databaseService;
 
 		public PersonalRecord PersonalRecord { get; set; }
+
+		private static IDataService DataService { get; } = DependencyService.Get<IDataService>();
 		#endregion
 
 		#region Commands
@@ -26,10 +29,13 @@ namespace CrossfitApp
 
 		public IMediaPicker MediaPicker { get; set; }
 
-		public AddNewPRViewModel(INavigationService navigationService)
+		public AddNewPRViewModel(INavigationService navigationService, IDataService databaseService)
 		{
 			if (navigationService == null) throw new ArgumentNullException(nameof(navigationService));
 			_navigationService = navigationService;
+
+			if (databaseService == null) throw new ArgumentNullException(nameof(databaseService));
+			_databaseService = databaseService;
 
 			MediaPicker = DependencyService.Get<IMediaPicker>();
 			SaveNewPRCommand = new RelayCommand(() => SaveNewPR(PersonalRecord));
@@ -37,6 +43,7 @@ namespace CrossfitApp
 
 		public void SaveNewPR(PersonalRecord newPR)
 		{
+			_databaseService.AddPersonalRecord(newPR);
 			var viewModel = App.Locator.PROverview;
 			viewModel.PersonalRecord.Add(newPR);
 			_navigationService.GoBack();

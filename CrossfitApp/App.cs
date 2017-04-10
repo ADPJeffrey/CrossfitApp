@@ -7,6 +7,7 @@ namespace CrossfitApp
 	public partial class App : Application
 	{
 		private readonly static Locator _locator = new Locator();
+		//private IDataService DataService { get; } = DependencyService.Get<IDataService>();
 
 		public static Locator Locator
 		{
@@ -30,12 +31,14 @@ namespace CrossfitApp
 
 		protected override void OnSleep()
 		{
-			// Handle when your app sleeps
+			//DataService.AddPersonalRecords(Locator.PROverview.PersonalRecord);
 		}
 
 		protected override void OnResume()
 		{
 			// Handle when your app resumes
 		}
+
+
 	}
 }
