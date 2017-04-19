@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -19,6 +20,7 @@ namespace CrossfitApp
 		private readonly IDataService _databaseService;
 
 		public PersonalRecord PersonalRecord { get; set; }
+		public List<ExerciseTypeEnum> ExersiceTypes { get; set; }
 
 		private static IDataService DataService { get; } = DependencyService.Get<IDataService>();
 		#endregion
@@ -29,6 +31,19 @@ namespace CrossfitApp
 
 		public IMediaPicker MediaPicker { get; set; }
 
+		/*
+			Types
+				Weight
+					RM
+					Kgs
+				Reps 
+					Reps
+				Distance 
+					Meters
+				Time
+					Time
+		*/
+
 		public AddNewPRViewModel(INavigationService navigationService, IDataService databaseService)
 		{
 			if (navigationService == null) throw new ArgumentNullException(nameof(navigationService));
@@ -36,6 +51,8 @@ namespace CrossfitApp
 
 			if (databaseService == null) throw new ArgumentNullException(nameof(databaseService));
 			_databaseService = databaseService;
+
+			Init();
 
 			MediaPicker = DependencyService.Get<IMediaPicker>();
 			SaveNewPRCommand = new RelayCommand(() => SaveNewPR(PersonalRecord));
@@ -57,6 +74,11 @@ namespace CrossfitApp
 		{
 			get;
 			set;
+		}
+
+		private void Init()
+		{
+			ExersiceTypes = Enum.GetValues(typeof(ExerciseTypeEnum)).Cast<ExerciseTypeEnum>().ToList();
 		}
 
 		private void Setup()

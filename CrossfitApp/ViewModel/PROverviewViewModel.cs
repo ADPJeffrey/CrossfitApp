@@ -44,13 +44,6 @@ namespace CrossfitApp
 		{
 			if (PersonalRecord != null) return;
 
-			PersonalRecord = new ObservableCollection<IPersonalRecord>();
-
-			// insert dummy data
-			//_databaseService.AddPersonalRecord(new PersonalRecord() { Name = "test" });
-
-			//var prs = _databaseService.GetPersonalRecords();
-
 			PersonalRecord = new ObservableCollection<IPersonalRecord>(_databaseService.GetPersonalRecords());
 		}
 

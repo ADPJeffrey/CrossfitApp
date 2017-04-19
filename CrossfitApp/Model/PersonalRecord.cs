@@ -33,6 +33,18 @@ namespace CrossfitApp
 			set;
 		}
 
+		public int Reps
+		{
+			get;
+			set;
+		}
+
+		public int Meters
+		{
+			get;
+			set;
+		}
+
 		public string Name
 		{
 			get;

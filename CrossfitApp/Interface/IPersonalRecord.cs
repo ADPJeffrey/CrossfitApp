@@ -11,6 +11,8 @@ namespace CrossfitApp
 		int ExerciseTypeID { get; set; }
 		int MaximumReps { get; set; }
 		int Weight { get; set; }
+		int Reps { get; set; }
+		int Meters { get; set; }
 		string Image { get; set; }
 		string Note { get; set; }
 	}

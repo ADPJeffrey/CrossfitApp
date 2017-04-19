@@ -24,6 +24,8 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
@@ -63,8 +65,8 @@
 			Grid.Row="2" 
 			Grid.Column="1" 
 			Title="Select" 
-			ItemsSource="{Binding PersonalRecord.ExerciseType}" 
-		SelectedItem="{Binding CurExersice}">
+			ItemsSource="{Binding ExersiceTypes}" 
+			SelectedItem="{Binding CurExersice}">
 		</bindablePicker:BindablePicker>
 	
 		<Label 
@@ -91,15 +93,38 @@
 			Text="{Binding PersonalRecord.Weight}">
 		</Entry>
 
-
-		<Image 
+		<Label 
 			Grid.Row="5" 
+			Grid.Column="0" 
+			Text="Reps">
+		</Label>
+		<Entry 
+			Keyboard="Numeric" 
+			Grid.Row="5" 
+			Grid.Column="1" 
+			Text="{Binding PersonalRecord.Reps}">
+		</Entry>
+
+		<Label 
+			Grid.Row="6" 
+			Grid.Column="0" 
+			Text="Meters">
+		</Label>
+		<Entry 
+			Keyboard="Numeric" 
+			Grid.Row="6" 
+			Grid.Column="1" 
+			Text="{Binding PersonalRecord.Meters}">
+		</Entry>
+		
+		<Image 
+			Grid.Row="7" 
 			Grid.Column="0" 
 			Grid.ColumnSpan="2">
 		</Image>
 
 		<Editor 
-			Grid.Row="6" 
+			Grid.Row="8" 
 			Grid.Column="0" 
 			Grid.ColumnSpan="2">
 		</Editor>
