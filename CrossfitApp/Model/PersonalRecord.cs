@@ -1,18 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SQLite;
 
 namespace CrossfitApp
 {
 	public class PersonalRecord : IPersonalRecord
 	{
+		private DateTime _date;
+
 		[PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
 
 		public DateTime Date
 		{
-			get;
-			set;
+			get
+			{
+				if (_date == DateTime.MinValue)
+					return DateTime.Now;
+
+				return _date;
+			}
+
+			set { _date = value; }
 		}
 
 		public int ExerciseTypeID
@@ -45,6 +55,12 @@ namespace CrossfitApp
 			set;
 		}
 
+		public TimeSpan Time
+		{
+			get;
+			set;
+		}
+
 		public string Name
 		{
 			get;
@@ -62,5 +78,6 @@ namespace CrossfitApp
 			get;
 			set;
 		}
+
 	}
 }

@@ -13,6 +13,7 @@ namespace CrossfitApp
 		int Weight { get; set; }
 		int Reps { get; set; }
 		int Meters { get; set; }
+		TimeSpan Time { get; set; }
 		string Image { get; set; }
 		string Note { get; set; }
 	}

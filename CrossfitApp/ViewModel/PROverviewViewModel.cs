@@ -51,6 +51,7 @@ namespace CrossfitApp
 		{
 			var prVM = App.Locator.AddNewPR;
 			prVM.PersonalRecord = new PersonalRecord();
+			prVM.ResetFields();
 			_navigationService.NavigateTo(Locator.AddNewPRPage);
 		}
 	}

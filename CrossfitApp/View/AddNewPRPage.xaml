@@ -5,8 +5,10 @@
 		x:Class="CrossfitApp.AddNewPRPage"
 		xmlns:bindablePicker="clr-namespace:CrossfitApp;assembly=CrossfitApp"
 		xmlns:d="clr-namespace:CrossfitApp.Base;assembly=CrossfitApp"
+		xmlns:behaviors="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors"
 		NavigationPage.HasBackButton="false"
-		Title="Add new PR">
+		Title="Add new PR"
+		x:Name="AddNewPRBasePage">
 
 	<ContentPage.ToolbarItems>
   		<ToolbarItem 
@@ -14,126 +16,141 @@
 			Command="{Binding SaveNewPRCommand}">
 		</ToolbarItem>
 	</ContentPage.ToolbarItems>
-	
-	<Grid 
-		x:Name="controlGrid" 
-		RowSpacing="1" ColumnSpacing="1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-			<RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-			<RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="100" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+	<ScrollView>
+		<Grid 
+			x:Name="controlGrid" 
+			RowSpacing="1" ColumnSpacing="1">
+	        <Grid.RowDefinitions>
+	            <RowDefinition Height="50" />
+				<RowDefinition Height="50" />
+	            <RowDefinition Height="50" />
+	            <RowDefinition Height="50" />
+	            <RowDefinition Height="50" />
+				<RowDefinition Height="50" />
+				<RowDefinition Height="50" />
+	            <RowDefinition Height="50" />
+	            <RowDefinition Height="*" />
+	            <RowDefinition Height="100" />
+	        </Grid.RowDefinitions>
+	        <Grid.ColumnDefinitions>
+	            <ColumnDefinition Width="*" />
+	            <ColumnDefinition Width="*" />
+	        </Grid.ColumnDefinitions>
+			
+	        <Label 
+				Grid.Row="0" 
+				Grid.Column="0" 
+				Text="Exercise" 
+				VerticalOptions="Center">
+			</Label>
+			<Entry 
+				Grid.Row="0" 
+				Grid.Column="1" 
+				Text="{Binding PersonalRecord.Name}">	
+			</Entry>
 		
-        <Label 
-			Grid.Row="0" 
-			Grid.Column="0" 
-			Text="Exercise" 
-			VerticalOptions="Center">
-		</Label>
-		<Entry 
-			Grid.Row="0" 
-			Grid.Column="1" 
-			Text="{Binding PersonalRecord.Name}">	
-		</Entry>
-	
-		<Label 
-			Grid.Row="1" 
-			Grid.Column="0" 
-			Text="Date">
-		</Label>
-		<DatePicker 
-			Grid.Row="1" 
-			Grid.Column="1" 
-			Date="{Binding PersonalRecord.Date}">
-		</DatePicker>
-	
-		<Label Grid.Row="2" 
-			Grid.Column="0" 
-			Text="Type">
-		</Label>
-		<bindablePicker:BindablePicker 
-			Grid.Row="2" 
-			Grid.Column="1" 
-			Title="Select" 
-			ItemsSource="{Binding ExersiceTypes}" 
-			SelectedItem="{Binding CurExersice}">
-		</bindablePicker:BindablePicker>
-	
-		<Label 
-			Grid.Row="3" 
-			Grid.Column="0" 
-			Text="RM">
-		</Label>
-		<Entry 
-			Keyboard="Numeric" 
-			Grid.Row="3" 
-			Grid.Column="1" 
-			Text="{Binding PersonalRecord.MaximumReps}">
-		</Entry>
-	
-		<Label 
-			Grid.Row="4" 
-			Grid.Column="0" 
-			Text="Kgs">
-		</Label>
-		<Entry 
-			Keyboard="Numeric" 
-			Grid.Row="4" 
-			Grid.Column="1" 
-			Text="{Binding PersonalRecord.Weight}">
-		</Entry>
-
-		<Label 
-			Grid.Row="5" 
-			Grid.Column="0" 
-			Text="Reps">
-		</Label>
-		<Entry 
-			Keyboard="Numeric" 
-			Grid.Row="5" 
-			Grid.Column="1" 
-			Text="{Binding PersonalRecord.Reps}">
-		</Entry>
-
-		<Label 
-			Grid.Row="6" 
-			Grid.Column="0" 
-			Text="Meters">
-		</Label>
-		<Entry 
-			Keyboard="Numeric" 
-			Grid.Row="6" 
-			Grid.Column="1" 
-			Text="{Binding PersonalRecord.Meters}">
-		</Entry>
+			<Label 
+				Grid.Row="1" 
+				Grid.Column="0" 
+				Text="Date">
+			</Label>
+			<DatePicker 
+				Grid.Row="1" 
+				Grid.Column="1" 
+				Date="{Binding PersonalRecord.Date}">
+	  		       	<DatePicker.Format>dd.MM.yyyy</DatePicker.Format>
+			</DatePicker>
 		
-		<Image 
-			Grid.Row="7" 
-			Grid.Column="0" 
-			Grid.ColumnSpan="2">
-		</Image>
+			<Label Grid.Row="2" 
+				Grid.Column="0" 
+				Text="Type" >
+			</Label>
+			<bindablePicker:BindablePicker 
+				Grid.Row="2" 
+				Grid.Column="1" 
+				Title="Select" 
+				ItemsSource="{Binding ExersiceTypes}"
+				SelectedItem="{Binding CurExercise, Mode=TwoWay}">
+			<behaviors:Interaction.Behaviors>
+				<behaviors:BehaviorCollection>
+          			<behaviors:EventToCommand EventName="SelectedIndexChanged" Command="{Binding SelectedItemCommand}"/>
+        		</behaviors:BehaviorCollection>
+			</behaviors:Interaction.Behaviors>
+			</bindablePicker:BindablePicker>
+		
+			<Label 
+				Grid.Row="3" 
+				Grid.Column="0" 
+				Text="RM" IsVisible="{Binding IsRMVisible, Mode=TwoWay }">
+			</Label>
+			<Entry 
+				Keyboard="Numeric" 
+				Grid.Row="3" 
+				Grid.Column="1" 
+				Text="{Binding PersonalRecord.MaximumReps}" IsVisible="{Binding IsRMVisible, Mode=TwoWay }">
+			</Entry>
+		
+			<Label 
+				Grid.Row="4" 
+				Grid.Column="0" 
+				Text="Kgs" IsVisible="{Binding IsKgsVisible, Mode=TwoWay }">
+			</Label>
+			<Entry 
+				Keyboard="Numeric" 
+				Grid.Row="4" 
+				Grid.Column="1" 
+				Text="{Binding PersonalRecord.Weight}" IsVisible="{Binding IsKgsVisible, Mode=TwoWay }">
+			</Entry>
 
-		<Editor 
-			Grid.Row="8" 
-			Grid.Column="0" 
-			Grid.ColumnSpan="2">
-		</Editor>
-	
-	</Grid>
-	
-	<!--		<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-				<Label Text="{Binding Person.FullName}"/>
-				<Button Text="Click me" Command="{Binding ClickMeCommand}"/>
-			</StackLayout>
-	-->
+			<Label 
+				Grid.Row="5" 
+				Grid.Column="0" 
+				Text="Reps" IsVisible="{Binding IsRepsVisible, Mode=TwoWay }">
+			</Label>
+			<Entry 
+				Keyboard="Numeric" 
+				Grid.Row="5" 
+				Grid.Column="1" 
+				Text="{Binding PersonalRecord.Reps}" IsVisible="{Binding IsRepsVisible, Mode=TwoWay }">
+			</Entry>
+
+			<Label 
+				Grid.Row="6" 
+				Grid.Column="0" 
+				Text="Meters" IsVisible="{Binding IsMetersVisible, Mode=TwoWay }">
+			</Label>
+			<Entry 
+				Keyboard="Numeric" 
+				Grid.Row="6" 
+				Grid.Column="1" 
+				Text="{Binding PersonalRecord.Meters}" IsVisible="{Binding IsMetersVisible, Mode=TwoWay}" >
+			</Entry>
+
+			<Label 
+				Grid.Row="7" 
+				Grid.Column="0" 
+				Text="Time" IsVisible="{Binding IsTimeVisible, Mode=TwoWay }">
+			</Label>
+			<Entry 
+				Keyboard="Numeric" 
+				Grid.Row="7" 
+				Grid.Column="1" 
+				Text="{Binding PersonalRecord.Time}" IsVisible="{Binding IsTimeVisible, Mode=TwoWay}" >
+			</Entry>
+			
+			<Image 
+				Grid.Row="8" 
+				Grid.Column="0" 
+				Grid.ColumnSpan="2"
+				Source="picture_placeholder.png">
+			</Image>
+
+			<Editor 
+				Grid.Row="9" 
+				Grid.Column="0" 
+				Grid.ColumnSpan="2">
+			</Editor>
+		
+		</Grid>
+		</ScrollView>
 </d:AddNewPRBasePage >
