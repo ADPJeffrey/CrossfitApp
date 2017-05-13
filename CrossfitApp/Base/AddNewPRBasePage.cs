@@ -3,6 +3,5 @@ namespace CrossfitApp.Base
 {
 	public class AddNewPRBasePage : ViewBase<AddNewPRViewModel>
 	{
-
 	}
 }

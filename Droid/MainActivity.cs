@@ -10,7 +10,7 @@ using Android.OS;
 
 namespace CrossfitApp.Droid
 {
-	[Activity(Label = "CrossfitApp.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity(Label = "CF Records", Icon = "@drawable/crossfit_icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate(Bundle bundle)

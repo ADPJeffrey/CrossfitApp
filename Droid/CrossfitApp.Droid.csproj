@@ -157,6 +157,10 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\picture_placeholder.png" />
+    <AndroidResource Include="Resources\drawable\crossfit_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crossfit_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crossfit_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crossfit_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

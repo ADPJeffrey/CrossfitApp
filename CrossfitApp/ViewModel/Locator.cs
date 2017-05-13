@@ -35,9 +35,9 @@ namespace CrossfitApp
 		/// <summary>
 		/// Gets the Main property.
 		/// </summary>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-			"CA1822:MarkMembersAsStatic",
-			Justification = "This non-static member is needed for data binding purposes.")]
+		//[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+		//	"CA1822:MarkMembersAsStatic",
+		//	Justification = "This non-static member is needed for data binding purposes.")]
 		public PROverviewViewModel PROverview
 		{
 			get { return ServiceLocator.Current.GetInstance<PROverviewViewModel>(); }
@@ -46,9 +46,9 @@ namespace CrossfitApp
 		/// <summary>
 		/// Gets the Detail property.
 		/// </summary>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-			"CA1822:MarkMembersAsStatic",
-			Justification = "This non-static member is needed for data binding purposes.")]
+		//[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+		//	"CA1822:MarkMembersAsStatic",
+		//	Justification = "This non-static member is needed for data binding purposes.")]
 		public AddNewPRViewModel AddNewPR
 		{
 			get { return ServiceLocator.Current.GetInstance<AddNewPRViewModel>(); }
